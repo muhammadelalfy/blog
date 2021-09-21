@@ -1,12 +1,6 @@
   @extends('admin.layout.master')
   @section('content')
 
- 
-    <link rel="stylesheet" href="{{ asset('public/admin/assets/css/lib/datatable/dataTables.bootstrap.min.css ') }}">
-    <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
-    
- 
- 
 
 
   <div class="breadcrumbs">
@@ -48,8 +42,9 @@
 
                         <div class="card-header">
                             <strong class="card-title">{{ $page_name }}</strong>
-     @permission(['Post Add','All'])              
- <a href="{{ url('/back/category/create') }}" class="btn btn-primary pull-right">Create</a>            @endpermission
+     {{-- @permission(['Post Add','All'])               --}}
+ <a href="{{ url('/category/create') }}" class="btn btn-primary pull-right">Create</a>         
+    {{-- @endpermission --}}
                         </div>
                         <div class="card-body">
                   <table id="bootstrap-data-table" class="table table-striped table-bordered">
@@ -69,7 +64,7 @@
                         <td>{{ ++$i }}</td>
                         <td>{{ $row->name }}</td>
                         <td> 
-                     {{ Form::open(['method'=>'PUT','url'=>['/back/category/status/'.$row->id],'style'=>'display:inline' ]) }}
+                     {{ Form::open(['method'=>'PUT','url'=>['/category/status/'.$row->id],'style'=>'display:inline' ]) }}
                      @if($row->status === 1)
                        {{ Form::submit('Unpublish',['class'=>'btn btn-danger']) }}
                        @else
@@ -80,14 +75,14 @@
                          </td>
                         
                         <td>
-                          @permission(['Post Add','All','Post Update']) 
-           <a href="{{ url('/back/category/edit/'.$row->id) }} " class="btn btn-primary">Edit</a>
-           @endpermission
-           @permission(['Post Add','All']) 
-           {{ Form::open(['method'=>'DELETE','url'=>['/back/category/delete/'.$row->id],'style'=>'display:inline' ]) }}
+                          {{-- @permission(['Post Add','All','Post Update'])  --}}
+           <a href="{{ url('/category/edit/'.$row->id) }} " class="btn btn-primary">Edit</a>
+           {{-- @endpermission --}}
+           {{-- @permission(['Post Add','All'])  --}}
+           {{ Form::open(['method'=>'DELETE','url'=>['/category/delete/'.$row->id],'style'=>'display:inline' ]) }}
            {{ Form::submit('Delete',['class'=>'btn btn-danger']) }}
            {{ Form::close() }}
-           @endpermission
+           {{-- @endpermission --}}
 
                          </td>
 
@@ -104,31 +99,7 @@
             </div><!-- .animated -->
         </div><!-- .content -->
 
-    <script src="{{ asset('public/admin/assets/js/vendor/jquery-2.1.4.min.js ') }}"></script>
-   
-    <script src="{{ asset('public/admin/assets/js/plugins.js ') }}"></script>
-    <script src="{{ asset('public/admin/assets/js/main.js ') }}"></script>
-
-<script src="{{ asset('public/admin/assets/js/lib/data-table/datatables.min.js') }}  "></script>
-    <script src="{{ asset('public/admin/assets/js/lib/data-table/dataTables.bootstrap.min.js ') }}"></script>
-    <script src="{{ asset('public/admin/assets/js/lib/data-table/dataTables.buttons.min.js ') }}"></script>
-    <script src="{{ asset('public/admin/assets/js/lib/data-table/buttons.bootstrap.min.js ') }}"></script>
-    <script src="{{ asset('public/admin/assets/js/lib/data-table/jszip.min.js ') }}"></script>
-    <script src="{{ asset('public/admin/assets/js/lib/data-table/pdfmake.min.js ') }}"></script>
-    <script src="{{ asset('public/admin/assets/js/lib/data-table/vfs_fonts.js ') }}"></script>
-    <script src="{{ asset('public/admin/assets/js/lib/data-table/buttons.html5.min.js ') }}"></script>
-    <script src="{{ asset('public/admin/assets/js/lib/data-table/buttons.print.min.js ') }}"></script>
-    <script src="{{ asset('public/admin/assets/js/lib/data-table/buttons.colVis.min.js ') }}"></script>
-    <script src="{{ asset('public/admin/assets/js/lib/data-table/datatables-init.js ') }}"></script>
-
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-          $('#bootstrap-data-table-export').DataTable();
-        } );
-    </script>
-
-
+    
 
 
 

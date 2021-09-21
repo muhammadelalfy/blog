@@ -13,11 +13,29 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="./"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                        <a href="/home"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
+                    @permission(['permision update','All','permission'])
                     <li class="active">
                         <a href="{{url('permission/list')}}"> <i class="menu-icon fa fa-dashboard"></i>Permission </a>
                     </li>
+                    @endpermission
+                    @permission(['permision update','All'])
+                    <li class="active">
+                        <a href="{{url('role/list')}}"> <i class="menu-icon fa fa-dashboard"></i>Roles </a>
+                    </li>
+                    @endpermission
+                    @permission(['permision update','All'])
+                    <li class="active">
+                        <a href="{{url('author/list')}}"> <i class="menu-icon fa fa-dashboard"></i>Authors </a>
+                    </li>
+                    @endpermission
+
+                    @permission(['category list','All'])
+                    <li class="active">
+                        <a href="{{url('category/list')}}"> <i class="menu-icon fa fa-dashboard"></i>Categories </a>
+                    </li>
+                    @endpermission
                 </ul>
 
                      

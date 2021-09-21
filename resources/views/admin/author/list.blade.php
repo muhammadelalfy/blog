@@ -48,8 +48,9 @@
 
                         <div class="card-header">
                             <strong class="card-title">{{ $page_name }}</strong>
-                   
- <a href="{{ url('/back/author/create') }}" class="btn btn-primary pull-right">Create</a>            
+                   @permission('All')
+                <a href="{{ url('/author/create') }}" class="btn btn-primary pull-right">Create</a>  
+                @endpermission          
                         </div>
                         <div class="card-body">
                   <table id="bootstrap-data-table" class="table table-striped table-bordered">
@@ -63,7 +64,7 @@
                       </tr>
                     </thead>
                     <tbody>
-
+  
                       @foreach($data as $i=>$row)
                       <tr>
                         <td>{{ ++$i }}</td>
@@ -84,8 +85,8 @@
 
 
                         <td>
-           <a href="{{ url('/back/author/edit/'.$row->id) }} " class="btn btn-primary">Edit</a>
-           {{ Form::open(['method'=>'DELETE','url'=>['/back/author/delete/'.$row->id],'style'=>'display:inline' ]) }}
+           <a href="{{ url('/author/edit/'.$row->id) }} " class="btn btn-primary">Edit</a>
+           {{ Form::open(['method'=>'DELETE','url'=>['/author/delete/'.$row->id],'style'=>'display:inline' ]) }}
            {{ Form::submit('Delete',['class'=>'btn btn-danger']) }}
            {{ Form::close() }}
 
@@ -103,34 +104,6 @@
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
-
-    <script src="{{ asset('public/admin/assets/js/vendor/jquery-2.1.4.min.js ') }}"></script>
- 
-    <script src="{{ asset('public/admin/assets/js/plugins.js ') }}"></script>
-    <script src="{{ asset('public/admin/assets/js/main.js ') }}"></script>
-
-<script src="{{ asset('public/admin/assets/js/lib/data-table/datatables.min.js') }}  "></script>
-    <script src="{{ asset('public/admin/assets/js/lib/data-table/dataTables.bootstrap.min.js ') }}"></script>
-    <script src="{{ asset('public/admin/assets/js/lib/data-table/dataTables.buttons.min.js ') }}"></script>
-    <script src="{{ asset('public/admin/assets/js/lib/data-table/buttons.bootstrap.min.js ') }}"></script>
-    <script src="{{ asset('public/admin/assets/js/lib/data-table/jszip.min.js ') }}"></script>
-    <script src="{{ asset('public/admin/assets/js/lib/data-table/pdfmake.min.js ') }}"></script>
-    <script src="{{ asset('public/admin/assets/js/lib/data-table/vfs_fonts.js ') }}"></script>
-    <script src="{{ asset('public/admin/assets/js/lib/data-table/buttons.html5.min.js ') }}"></script>
-    <script src="{{ asset('public/admin/assets/js/lib/data-table/buttons.print.min.js ') }}"></script>
-    <script src="{{ asset('public/admin/assets/js/lib/data-table/buttons.colVis.min.js ') }}"></script>
-    <script src="{{ asset('public/admin/assets/js/lib/data-table/datatables-init.js ') }}"></script>
-
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-          $('#bootstrap-data-table-export').DataTable();
-        } );
-    </script>
-
-
-
-
 
 
 

@@ -1,6 +1,18 @@
  @extends('admin.layout.master')
   @section('content')
 
+  <script>
+      jQuery(document).ready(function() {
+          jQuery(".myselect").chosen({
+              disable_search_threshold: 10,
+              no_results_text: "Oops, nothing found!",
+              width: "100%"
+          });
+      });
+     
+  </script>
+
+
  <div class="row">
   <div class="col-md-12">
 
@@ -28,7 +40,7 @@
 
                                   <hr>
 
-                                  {{ Form::open(array('url' => 'permission/store','method'=>'post')) }}
+                                  {{ Form::open(array('url' => 'role/store','method'=>'post')) }}
 
 
                                   <div class="form-group">
@@ -48,6 +60,13 @@
 
                     {{ Form::textarea('description',null,['class'=>'form-control','id'=>'description'] )  }}
                                         </div>
+
+                                        <div class="form-group">
+                    {{ Form::label('permission', 'Permission', array('class' => 'control-label mb-1')) }}
+                                      
+                    {{ Form::select('permission[]',$permission,null,['class'=>'form-control myselect','data-placeholder'=>'Select Permissions', 'multiple'] )  }}
+                                </div>                        
+ 
 
                 <div>
                     <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">

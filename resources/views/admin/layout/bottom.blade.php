@@ -37,4 +37,6 @@
                 normalizeFunction: 'polynomial'
             } );
         } )( jQuery );
+
+        
     </script>

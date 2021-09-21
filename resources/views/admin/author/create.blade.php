@@ -1,6 +1,6 @@
  @extends('admin.layout.master')
   @section('content')
- <link rel="stylesheet" href="{{ asset('/public/admin/assets/css/lib/chosen/chosen.css') }}">
+ <link rel="stylesheet" href="{{ asset('/admin/assets/css/lib/chosen/chosen.css') }}">
   <script src="{{ asset('/public/admin/assets/js/lib/chosen/chosen.jquery.js') }}"></script>
 
 
@@ -42,7 +42,7 @@
                                   
                                   <hr>
 
-    {{ Form::open(array('url' => 'back/author/store','method'=>'post')) }}
+    {{ Form::open(array('url' => 'author/store','method'=>'post')) }}
                                  
                                       
                           <div class="form-group">

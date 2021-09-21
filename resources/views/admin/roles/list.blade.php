@@ -1,4 +1,4 @@
-  @extends('admin.layout.master')
+@extends('admin.layout.master')
   @section('content')
 
 
@@ -49,7 +49,7 @@
                         <div class="card-header">
                             <strong class="card-title">{{ $page_name }}</strong>
 
- <a href="{{ url('/permission/create') }}" class="btn btn-primary pull-right">Create</a>
+ <a href="{{ url('/role/create') }}" class="btn btn-primary pull-right">Create</a>
 
                         </div>
                         <div class="card-body">
@@ -60,6 +60,8 @@
                         <th>Name</th>
                         <th>display name</th>
                         <th>description</th>
+                        <th>permissions</th>
+
                          <th>Option</th>
                       </tr>
                     </thead>
@@ -72,10 +74,22 @@
                         <td>{{ $row->name }}</td>
                         <td>{{ $row->display_name }}</td>
                         <td>{{ $row->description }}</td>
-                        <td><a href="{{ url('permission/edit/'.$row->id) }} " class="btn btn-primary">Edit</a></td>
-                        <td><a href="{{ url('permission/edit/'.$row->id) }} " class="btn btn-primary">Edit</a></td>
+                        <td>
+                         @if($row->perms())
+                             <ul style="margin-left: 20px">
+                     	@foreach($row->perms()->get() as $permission)
 
-                      </tr>
+                     	<li> {{ $permission->name }} </li>
+                     	@endforeach
+                     </ul>
+                      @endif</td>
+
+                        <td><a href="{{ url('role/edit/'.$row->id) }} " class="btn btn-primary">Edit</a>
+                         {{ Form::open(['method'=>'DELETE','url'=>['role/delete/'.$row->id],'style'=>'display:inline' ]) }}
+                         {{ Form::submit('Delete',['class'=>'btn btn-danger']) }}
+                         {{ Form::close() }}
+                         </td>
+                        </tr>
                       @endforeach
                     </tbody>
                   </table>
@@ -86,32 +100,7 @@
 
                 </div>
             </div><!-- .animated -->
-        </div><!-- .content -->
-
-    <script src="{{ asset('admin/assets/js/vendor/jquery-2.1.4.min.js ') }}"></script>
-
-    <script src="{{ asset('admin/assets/js/plugins.js ') }}"></script>
-    <script src="{{ asset('admin/assets/js/main.js ') }}"></script>
-
-<script src="{{ asset('admin/assets/js/lib/data-table/datatables.min.js') }}  "></script>
-    <script src="{{ asset('admin/assets/js/lib/data-table/dataTables.bootstrap.min.js ') }}"></script>
-    <script src="{{ asset('admin/assets/js/lib/data-table/dataTables.buttons.min.js ') }}"></script>
-    <script src="{{ asset('admin/assets/js/lib/data-table/buttons.bootstrap.min.js ') }}"></script>
-    <script src="{{ asset('admin/assets/js/lib/data-table/jszip.min.js ') }}"></script>
-    <script src="{{ asset('admin/assets/js/lib/data-table/pdfmake.min.js ') }}"></script>
-    <script src="{{ asset('admin/assets/js/lib/data-table/vfs_fonts.js ') }}"></script>
-    <script src="{{ asset('admin/assets/js/lib/data-table/buttons.html5.min.js ') }}"></script>
-    <script src="{{ asset('admin/assets/js/lib/data-table/buttons.print.min.js ') }}"></script>
-    <script src="{{ asset('admin/assets/js/lib/data-table/buttons.colVis.min.js ') }}"></script>
-    <script src="{{ asset('admin/assets/js/lib/data-table/datatables-init.js ') }}"></script>
-
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-          $('#bootstrap-data-table-export').DataTable();
-        } );
-    </script>
-
+        </div>
 
 
 
